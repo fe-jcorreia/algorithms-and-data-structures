@@ -13,6 +13,7 @@ int is_empty(Vector *v);
 int at(Vector *v, int index);
 void resize(Vector *v, int capacity);
 void push(Vector *v, int item);
+void edit(Vector *v, int index, int value);
 void insert(Vector *v, int index, int item);
 void prepend(Vector *v, int item);
 void pop(Vector *v);
