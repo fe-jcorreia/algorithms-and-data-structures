@@ -24,7 +24,7 @@ void printVector(Vector *v);
 
 void run_all_tests();
 void test_initVector();
-void test_append();
+void test_push();
 void test_resize();
 void test_empty();
 void test_at();
