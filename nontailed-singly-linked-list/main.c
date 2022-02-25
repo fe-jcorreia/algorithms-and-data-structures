@@ -3,9 +3,6 @@
 
 int main()
 {
-  SinglyLinkedList *list = initList();
-  printf("%d\n", isEmpty(list));
-  pushFront(list, 3);
-  pushFront(list, 4);
-  printList(list);
+  run_all_tests();
+  return 0;
 }

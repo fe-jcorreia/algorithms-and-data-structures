@@ -54,6 +54,13 @@ void pushBack(SinglyLinkedList *list, int data)
   newNode->data = data;
   newNode->next = NULL;
 
+  if (list->length == 0)
+  {
+    list->head = newNode;
+    list->length++;
+    return;
+  }
+
   LinkedListNode *node = list->head;
   for (int i = 0; i < list->length - 1; i++)
     node = node->next;
@@ -93,6 +100,12 @@ void insert(SinglyLinkedList *list, int data, int index)
   if (index < 0 || index > list->length - 1)
     exit(EXIT_FAILURE);
 
+  if (index == 0)
+  {
+    pushFront(list, data);
+    return;
+  }
+
   LinkedListNode *newNode = (LinkedListNode *)malloc(sizeof(LinkedListNode));
   newNode->data = data;
   newNode->next = NULL;
@@ -106,6 +119,77 @@ void insert(SinglyLinkedList *list, int data, int index)
   prev->next = newNode;
   newNode->next = node;
   list->length++;
+}
+
+void erase(SinglyLinkedList *list, int index)
+{
+  if (index < 0 || index > list->length - 1)
+    exit(EXIT_FAILURE);
+
+  if (index == 0)
+  {
+    popFront(list);
+    return;
+  }
+
+  LinkedListNode *prev = list->head;
+  LinkedListNode *node;
+  for (int i = 0; i < index - 1; i++)
+    prev = prev->next;
+
+  node = prev->next;
+  prev->next = node->next;
+  free(node);
+  list->length--;
+}
+
+int valueNFromEnd(SinglyLinkedList *list, int index)
+{
+  return at(list, list->length - 1 - index);
+}
+
+void reverse(SinglyLinkedList *list)
+{
+  LinkedListNode *prev = list->head;
+  LinkedListNode *post = list->head->next->next;
+  list->head = list->head->next;
+  prev->next = NULL;
+
+  for (int i = 0; i < list->length - 2; i++)
+  {
+    list->head->next = prev;
+    prev = list->head;
+    list->head = post;
+    post = post->next;
+  }
+  list->head->next = prev;
+}
+
+void removeFirstValue(SinglyLinkedList *list, int value)
+{
+  LinkedListNode *node = list->head;
+  for (int i = 0; i < list->length; i++)
+  {
+    if (node->data == value)
+    {
+      erase(list, i);
+      break;
+    }
+    node = node->next;
+  }
+}
+
+void destroyList(SinglyLinkedList *list)
+{
+  LinkedListNode *prev = list->head;
+  for (int i = 0; i < list->length; i++)
+  {
+    list->head = list->head->next;
+    free(prev);
+    prev = list->head;
+  }
+
+  free(list);
 }
 
 void printList(SinglyLinkedList *list)

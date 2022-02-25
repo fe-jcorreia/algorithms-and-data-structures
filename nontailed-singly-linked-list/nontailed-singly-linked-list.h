@@ -23,6 +23,27 @@ void popBack(SinglyLinkedList *list);
 int front(SinglyLinkedList *list);
 int back(SinglyLinkedList *list);
 void insert(SinglyLinkedList *list, int data, int index);
+void erase(SinglyLinkedList *list, int index);
+int valueNFromEnd(SinglyLinkedList *list, int index);
+void reverse(SinglyLinkedList *list);
+void removeFirstValue(SinglyLinkedList *list, int value);
+void destroyList(SinglyLinkedList *list);
 void printList(SinglyLinkedList *list);
+
+void run_all_tests();
+void test_initList();
+void test_isEmpty();
+void test_at();
+void test_pushFront();
+void test_popFront();
+void test_pushBack();
+void test_popBack();
+void test_front();
+void test_back();
+void test_insert();
+void test_erase();
+void test_valueNFromEnd();
+void test_reverse();
+void test_removeFirstValue();
 
 #endif
