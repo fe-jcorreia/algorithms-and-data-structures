@@ -1,13 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "nontailed-singly-linked-list.h"
+#include "tailed-singly-linked-list.h"
 
 SinglyLinkedList *initList()
 {
   SinglyLinkedList *linkedList = (SinglyLinkedList *)malloc(sizeof(SinglyLinkedList));
   linkedList->length = 0;
   linkedList->head = NULL;
+  linkedList->tail = NULL;
 
   return linkedList;
 }
@@ -25,6 +26,9 @@ int at(SinglyLinkedList *list, int index)
   if (index < 0 || index > list->length - 1)
     exit(EXIT_FAILURE);
 
+  if (index == list->length - 1)
+    return list->tail->data;
+
   LinkedListNode *node = list->head;
   for (int i = 0; i < index; i++)
     node = node->next;
@@ -37,6 +41,10 @@ void pushFront(SinglyLinkedList *list, int data)
   newNode->data = data;
   newNode->next = list->head;
   list->head = newNode;
+
+  if (list->length == 0)
+    list->tail = list->head;
+
   list->length++;
 }
 
@@ -58,15 +66,13 @@ void pushBack(SinglyLinkedList *list, int data)
   if (list->length == 0)
   {
     list->head = newNode;
+    list->tail = newNode;
     list->length++;
     return;
   }
 
-  LinkedListNode *node = list->head;
-  for (int i = 0; i < list->length - 1; i++)
-    node = node->next;
-
-  node->next = newNode;
+  list->tail->next = newNode;
+  list->tail = newNode;
   list->length++;
 }
 
@@ -79,6 +85,7 @@ void popBack(SinglyLinkedList *list)
 
   node = prev->next;
   prev->next = NULL;
+  list->tail = prev;
   free(node);
   list->length--;
 }
@@ -90,10 +97,7 @@ int front(SinglyLinkedList *list)
 
 int back(SinglyLinkedList *list)
 {
-  LinkedListNode *node = list->head;
-  for (int i = 0; i < list->length - 1; i++)
-    node = node->next;
-  return node->data;
+  return list->tail->data;
 }
 
 void insert(SinglyLinkedList *list, int data, int index)
@@ -140,6 +144,8 @@ void erase(SinglyLinkedList *list, int index)
 
   node = prev->next;
   prev->next = node->next;
+  if (list->tail == node)
+    list->tail = prev;
   free(node);
   list->length--;
 }
@@ -155,6 +161,7 @@ void reverse(SinglyLinkedList *list)
   LinkedListNode *post = list->head->next->next;
   list->head = list->head->next;
   prev->next = NULL;
+  list->tail = prev;
 
   for (int i = 0; i < list->length - 2; i++)
   {
@@ -199,8 +206,12 @@ void printList(SinglyLinkedList *list)
   if (list->length == 0)
     printf("List is empty\n");
   else
+  {
+    printf("Head: %d\n", list->head->data);
+    printf("Tail: %d\n", list->tail->data);
     for (LinkedListNode *l = list->head; l != NULL; l = l->next)
       printf("%d ", l->data);
+  }
 
   printf("\n");
 }
