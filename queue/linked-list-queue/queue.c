@@ -15,14 +15,14 @@ Queue *initQueue()
 
 void enqueue(Queue *q, int value)
 {
-  pushFront(q->list, value);
+  pushBack(q->list, value);
   q->length++;
 }
 
 int dequeue(Queue *q)
 {
-  int value = q->list->tail->data;
-  popBack(q->list);
+  int value = q->list->head->data;
+  popFront(q->list);
   q->length--;
   return value;
 }

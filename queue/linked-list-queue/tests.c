@@ -31,11 +31,11 @@ void test_enqueue()
   for (int i = 0; i < 5; i++)
     enqueue(q, i);
 
-  assert(q->list->head->data == 4);
-  assert(q->list->head->next->data == 3);
+  assert(q->list->head->data == 0);
+  assert(q->list->head->next->data == 1);
   assert(q->list->head->next->next->data == 2);
-  assert(q->list->head->next->next->next->data == 1);
-  assert(q->list->tail->data == 0);
+  assert(q->list->head->next->next->next->data == 3);
+  assert(q->list->tail->data == 4);
 
   printf("Test enqueue: OK\n");
 
