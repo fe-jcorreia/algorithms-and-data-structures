@@ -2,30 +2,30 @@
 #include <stdlib.h>
 
 #include "stack.h"
-#include "../../linked-list/nontailed-singly-linked-list/nontailed-singly-linked-list.h"
+#include "../../vector/vector.h"
 
 Stack *initStack()
 {
   Stack *s = (Stack *)malloc(sizeof(Stack));
   s->length = 0;
-  s->list = initList();
+  s->list = initVector();
 
   return s;
 }
 
-void push(Stack *s, int value)
+void pushStack(Stack *s, int value)
 {
-  pushFront(s->list, value);
+  push(s->list, value);
   s->length++;
 }
 
-int pop(Stack *s)
+int popStack(Stack *s)
 {
   if (isStackEmpty(s))
     return -1;
 
-  int value = s->list->head->data;
-  popFront(s->list);
+  int value = at(s->list, s->length - 1);
+  pop(s->list);
   s->length--;
   return value;
 }
@@ -40,16 +40,16 @@ int top(Stack *s)
   if (isStackEmpty(s))
     return -1;
 
-  return s->list->head->data;
+  return at(s->list, s->length - 1);
 }
 
 void destroyStack(Stack *s)
 {
-  destroyList(s->list);
+  destroyVector(s->list);
   free(s);
 }
 
 void printStack(Stack *s)
 {
-  printList(s->list);
+  printVector(s->list);
 }
