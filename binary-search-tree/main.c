@@ -3,18 +3,19 @@
 
 int main()
 {
-  BST *tree = initBST();
-  insertInBST(tree, 15);
-  insertInBST(tree, 45);
-  insertInBST(tree, 9);
-  insertInBST(tree, 9);
-  insertInBST(tree, 10);
-  insertInBST(tree, 1);
-  insertInBST(tree, 2);
-  insertInBST(tree, 30);
-  insertInBST(tree, 53);
-  insertInBST(tree, 47);
-  insertInBST(tree, 20);
+  run_all_tests();
+  // BST *tree = initBST();
+  // insertInBST(tree, 15);
+  // insertInBST(tree, 45);
+  // insertInBST(tree, 9);
+  // insertInBST(tree, 9);
+  // insertInBST(tree, 10);
+  // insertInBST(tree, 1);
+  // insertInBST(tree, 2);
+  // insertInBST(tree, 30);
+  // insertInBST(tree, 53);
+  // insertInBST(tree, 47);
+  // insertInBST(tree, 20);
   // printBST(tree);
 
   // printf("%d\n", getBSTNodeCount(tree));
@@ -37,9 +38,18 @@ int main()
   // deleteValueBST(tree, 45);
   // printBST(tree);
 
-  
+  // BST *tree2 = initBST();
+  // tree2->root = createNode(16, NULL);
+  // tree2->root->left = createNode(12, tree->root);
+  // tree2->root->right = createNode(20, tree->root);
+  // tree2->root->left->left = createNode(6, tree->root->left);
+  // tree2->root->left->right = createNode(3, tree->root->left);
+  // printf("tree: %d\n", isBST(tree));
+  // printf("tree 2: %d\n", isBST(tree2));
 
-  printf("\n");
+  // printf("%d\n", getSuccessorBST(tree, 30));
+
+  // printf("\n");
 
   return 0;
 }

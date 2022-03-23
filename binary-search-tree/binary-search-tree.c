@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 
 #include "binary-search-tree.h"
 
@@ -170,9 +171,62 @@ void deleteValueBST(BST *tree, int value)
   deleteValue(tree->root, value);
 }
 
-int isBinarySearchTree() {}
+int isBinarySearchTree(BSTNode *root, int upperBound, int lowerBound)
+{
+  if (!root)
+    return 1;
 
-int getSuccessor() {}
+  if (root->data <= upperBound && root->data > lowerBound)
+  {
+    return isBinarySearchTree(root->left, root->data, lowerBound) && isBinarySearchTree(root->right, upperBound, root->data);
+  }
+  else
+    return 0;
+}
+
+int isBST(BST *tree)
+{
+  return isBinarySearchTree(tree->root, INT_MAX, INT_MIN);
+}
+
+int getSuccessor(BSTNode *root, int value)
+{
+  if (!root)
+    return -1;
+
+  if (root->data == value)
+  {
+    if (root->right)
+    {
+      BSTNode *node = root->right;
+      while (node->left != NULL)
+        node = node->left;
+
+      return node->data;
+    }
+
+    else if (!root->right)
+    {
+      if (root->parent->data < root->data)
+        return root->parent->parent->data;
+      else if (root->parent->data >= root->data)
+        return root->parent->data;
+    }
+  }
+
+  else if (value <= root->data)
+    return getSuccessor(root->left, value);
+
+  else if (value > root->data)
+    return getSuccessor(root->right, value);
+}
+
+int getSuccessorBST(BST *tree, int value)
+{
+  if (value == getMax(tree))
+    return -1;
+  return getSuccessor(tree->root, value);
+}
 
 void printTree(BSTNode *root)
 {
@@ -195,4 +249,18 @@ void printBST(BST *tree)
   printTree(tree->root);
 }
 
-void destroyTree(BST *tree) {}
+void destroyAllNodes(BSTNode *node)
+{
+  if (!node)
+    return;
+
+  destroyAllNodes(node->left);
+  destroyAllNodes(node->right);
+  free(node);
+}
+
+void destroyTree(BST *tree)
+{
+  destroyAllNodes(tree->root);
+  free(tree);
+}

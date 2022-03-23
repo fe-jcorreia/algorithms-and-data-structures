@@ -15,6 +15,7 @@ typedef struct bst
 } BST;
 
 BST *initBST();
+BSTNode *createNode(int value, BSTNode *parent);
 void insertInBST(BST *tree, int value);
 int getBSTNodeCount(BST *tree);
 int isInBST(BST *tree, int value);
@@ -22,20 +23,21 @@ int getBSTHeight(BST *tree);
 int getMin(BST *tree);
 int getMax(BST *tree);
 void deleteValueBST(BST *tree, int value);
-int isBinarySearchTree();
-int getSuccessor();
+int isBST(BST *tree);
+int getSuccessorBST(BST* tree, int value);
 void printBST(BST *tree);
 void destroyTree(BST *tree);
 
 void run_all_tests();
-void test_insert();
-void test_getNodeCount();
-void test_isInTree();
-void test_getHeight();
+void test_initBST();
+void test_insertInBST();
+void test_getBSTNodeCount();
+void test_isInBST();
+void test_getBSTHeight();
 void test_getMin();
 void test_getMax();
-void test_isBinarySearchTree();
-void test_deleteValue();
-void test_getSuccessor();
+void test_isBST();
+void test_deleteValueBST();
+void test_getSuccessorBST();
 
 #endif
