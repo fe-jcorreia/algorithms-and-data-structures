@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 #include "queue.h"
-#include "../../linked-list/tailed-singly-linked-list/tailed-singly-linked-list.h"
+#include "./linked-list/tailed-singly-linked-list.h"
 
 Queue *initQueue()
 {

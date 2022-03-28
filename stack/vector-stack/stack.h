@@ -1,7 +1,7 @@
 #ifndef PROJECT_STACK_H
 #define PROJECT_STACK_H
 
-#include "../../vector/vector.h"
+#include "./vector/vector.h"
 
 typedef struct stack
 {

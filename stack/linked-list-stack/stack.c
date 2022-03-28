@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 #include "stack.h"
-#include "../../linked-list/nontailed-singly-linked-list/nontailed-singly-linked-list.h"
+#include "./linked-list/nontailed-singly-linked-list.h"
 
 Stack *initStack()
 {

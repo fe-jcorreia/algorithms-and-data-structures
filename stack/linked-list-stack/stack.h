@@ -1,7 +1,7 @@
 #ifndef PROJECT_STACK_H
 #define PROJECT_STACK_H
 
-#include "../../linked-list/nontailed-singly-linked-list/nontailed-singly-linked-list.h"
+#include "./linked-list/nontailed-singly-linked-list.h"
 
 typedef struct stack
 {

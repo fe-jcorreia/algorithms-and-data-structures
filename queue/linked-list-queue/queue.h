@@ -1,7 +1,7 @@
 #ifndef PROJECT_QUEUE_H
 #define PROJECT_QUEUE_H
 
-#include "../../linked-list/tailed-singly-linked-list/tailed-singly-linked-list.h"
+#include "./linked-list/tailed-singly-linked-list.h"
 
 typedef struct queue
 {

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 #include "stack.h"
-#include "../../vector/vector.h"
+#include "./vector/vector.h"
 
 Stack *initStack()
 {
