@@ -50,9 +50,9 @@ int getSize(Heap *h)
 int isEmptyHeap(Heap *h)
 {
   if (h->length)
-    return 1;
-  else
     return 0;
+  else
+    return 1;
 }
 
 int extractMax(Heap *h)
