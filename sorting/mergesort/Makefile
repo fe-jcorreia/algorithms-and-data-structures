@@ -1,2 +1,2 @@
 mergesort: 
-	gcc main.c mergesort.c tests.c -o a.out
+	gcc main.c mergesort.c ./vector/vector.c tests.c -o a.out

@@ -36,13 +36,13 @@ void sorting(int array[], int aux[], int max, int min)
   merge(array, aux, max, min, middle);
 }
 
-void mergesort(int array[])
+void mergesort(Vector *v)
 {
-  int n = 18;
+  int n = v->length;
   int aux[n];
 
   for (int i = 0; i < n; i++)
-    aux[i] = array[i];
+    aux[i] = v->array[i];
 
-  sorting(array, aux, n - 1, 0);
+  sorting(v->array, aux, n - 1, 0);
 }
