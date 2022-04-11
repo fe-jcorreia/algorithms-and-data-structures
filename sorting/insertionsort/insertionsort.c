@@ -5,8 +5,9 @@
 
 void insertionsort(Vector *v)
 {
-  for (int key = 1; key < v->length; key++)
+  for (int i = 1; i < v->length; i++)
   {
+    int key = i;
     int aux = v->array[key];
     while (key != 0 && v->array[key - 1] > v->array[key])
     {
