@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <assert.h>
-#include "mergesort.h"
+#include "bubblesort.h"
 
 void run_all_tests()
 {
-  test_mergesort();
+  test_bubblesort();
 }
 
-void test_mergesort()
+void test_bubblesort()
 {
   Vector *v = initVector();
   push(v, 64);
@@ -23,14 +23,14 @@ void test_mergesort()
   push(v, 62);
   push(v, 1);
   push(v, 99);
-  push(v, 17);
   push(v, 40);
+  push(v, 17);
   push(v, 76);
   push(v, 34);
   push(v, 92);
   push(v, 23);
 
-  mergesort(v);
+  bubblesort(v);
 
   assert(v->array[0] == 1);
   assert(v->array[1] == 2);
@@ -52,5 +52,5 @@ void test_mergesort()
   assert(v->array[17] == 92);
   assert(v->array[18] == 99);
 
-  printf("Test mergesort: OK\n");
+  printf("Test bubblesort: OK\n");
 }

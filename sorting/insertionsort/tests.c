@@ -22,6 +22,7 @@ void test_insertionsort()
   push(v, 55);
   push(v, 62);
   push(v, 1);
+  push(v, 40);
   push(v, 99);
   push(v, 17);
   push(v, 76);
@@ -40,15 +41,16 @@ void test_insertionsort()
   assert(v->array[6] == 23);
   assert(v->array[7] == 34);
   assert(v->array[8] == 40);
-  assert(v->array[9] == 51);
-  assert(v->array[10] == 55);
-  assert(v->array[11] == 59);
-  assert(v->array[12] == 62);
-  assert(v->array[13] == 64);
-  assert(v->array[14] == 73);
-  assert(v->array[15] == 76);
-  assert(v->array[16] == 92);
-  assert(v->array[17] == 99);
+  assert(v->array[9] == 40);
+  assert(v->array[10] == 51);
+  assert(v->array[11] == 55);
+  assert(v->array[12] == 59);
+  assert(v->array[13] == 62);
+  assert(v->array[14] == 64);
+  assert(v->array[15] == 73);
+  assert(v->array[16] == 76);
+  assert(v->array[17] == 92);
+  assert(v->array[18] == 99);
 
   printf("Test insertionsort: OK\n");
 }
