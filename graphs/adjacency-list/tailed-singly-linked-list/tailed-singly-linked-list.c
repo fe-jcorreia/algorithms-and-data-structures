@@ -202,16 +202,13 @@ void destroyList(SinglyLinkedList *list)
 
 void printList(SinglyLinkedList *list)
 {
-  printf("Length: %d\n", list->length);
+  printf("[");
   if (list->length == 0)
-    printf("List is empty\n");
+    printf("\n");
   else
-  {
-    printf("Head: %d\n", list->head->data);
-    printf("Tail: %d\n", list->tail->data);
     for (LinkedListNode *l = list->head; l != NULL; l = l->next)
       printf("%d ", l->data);
-  }
+  printf("]");
 
   printf("\n");
 }

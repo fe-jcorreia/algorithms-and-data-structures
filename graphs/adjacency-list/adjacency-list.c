@@ -96,10 +96,7 @@ void printGraph(Graph *graph)
   else
     for (int i = 0; i < graph->totalVertices; i++)
     {
-      printf("\n");
-      printf("VERTEX %d:\n", i);
+      printf("%d: ", i);
       printList(graph->adjList[i]);
     }
-
-  printf("\n");
 }
