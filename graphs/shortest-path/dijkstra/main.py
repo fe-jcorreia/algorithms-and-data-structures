@@ -1,16 +1,5 @@
-from dijkstra import dijkstra
+from tests import TestDijkstra
 
-graph = [
-  [(0,1,5)],
-  [(1,0,5), (1,2,2), (1,3,1), (1,4,3)],
-  [(2,1,2)],
-  [(3,1,1), (3,4,1), (3,5,2), (3,6,4)],
-  [(4,1,3), (4,3,1)],
-  [(5,3,2), (5,7,2)],
-  [(6,3,4), (6,7,1)],
-  [(7,5,2), (7,6,1), (7,8,1)],
-  [(8,7,1)],
-]
+testDijkstra = TestDijkstra()
 
-for index, _ in enumerate(graph):
-  dijkstra(graph, index)
+testDijkstra.run_all_tests()

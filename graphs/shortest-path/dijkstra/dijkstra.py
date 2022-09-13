@@ -1,43 +1,35 @@
 import sys
+import heapq
 
-def get_min_distance(distance_list, status):
-  min_item = sys.maxsize
-  min_index = -1
-  for index, item in enumerate(distance_list):
-    if min_item >= item and status[index] == False:
-      min_item = item
-      min_index = index
+class Dijkstra():
+  def execute(self, graph, initialIndex):
+    if initialIndex < 0 or initialIndex >= len(graph):
+      print("Vértice inválido")
+      return
 
-  return min_item, min_index
+    total_distance = [sys.maxsize for _ in graph]
+    total_distance[initialIndex] = 0
 
-def dijkstra(graph, initialIndex):
-  if initialIndex < 0 or initialIndex >= len(graph):
-    print("Vértice inválido")
-    return
+    heap = [(0, initialIndex)]
 
-  total_distance = [sys.maxsize for _ in graph]
-  total_distance[initialIndex] = 0
+    parent = [None for _ in graph]
 
-  parent = [-1 for _ in graph]
+    while(len(heap) > 0):
+      currentDistance, currentVertex = heapq.heappop(heap)
 
-  status = [False for _ in graph]
+      if currentDistance > total_distance[currentVertex]:
+        continue
 
-  while(False in status):
-    _, currentVertex = get_min_distance(total_distance, status)
+      for edge in graph[currentVertex]:
+        nextVertex = edge[1]
+        edgeWeight = edge[2]
 
-    for edge in graph[currentVertex]:
-      nextVertex = edge[1]
-      edgeWeight = edge[2]
-
-      if status[nextVertex] != True:
-
-        if total_distance[nextVertex] > total_distance[currentVertex] + edgeWeight:
-          total_distance[nextVertex] = total_distance[currentVertex] + edgeWeight
+        if total_distance[nextVertex] > currentDistance + edgeWeight:
+          total_distance[nextVertex] = currentDistance + edgeWeight
           parent[nextVertex] = currentVertex
+          heapq.heappush(heap, (total_distance[nextVertex], nextVertex))
 
-    status[currentVertex] = True
-
-  print("================ RESULT ================")
-  print("FROM INDEX", initialIndex)
-  print("\ndistance: ", total_distance)
-  print("\nparent: ", parent)
+    print("================ RESULT ================")
+    print("FROM INDEX", initialIndex)
+    print("\ndistance: ", total_distance)
+    print("\nparent: ", parent)
