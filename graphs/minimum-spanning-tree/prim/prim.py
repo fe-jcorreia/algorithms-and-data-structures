@@ -17,11 +17,8 @@ class Prim():
     status = [False for _ in graph]
 
     while(len(heap) > 0):
-      currentDistance, currentVertex = heapq.heappop(heap)
+      _, currentVertex = heapq.heappop(heap)
       status[currentVertex] = True
-
-      if currentDistance > frontier_distance[currentVertex]:
-        continue
 
       for edge in graph[currentVertex]:
         nextVertex = edge[1]
