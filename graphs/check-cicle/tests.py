@@ -1,4 +1,3 @@
-from opcode import hascompare
 from checkCicle import CheckCicle
 
 class TestCheckCicle():
