@@ -7,12 +7,15 @@ class Dijkstra():
       print("Vértice inválido")
       return
 
-    total_distance = [sys.maxsize for _ in graph]
+    total_distance = []
+    parent = []
+
+    for _ in graph:
+      total_distance.append(sys.maxsize)
+      parent.append(None)
+
     total_distance[initialIndex] = 0
-
     heap = [(0, initialIndex)]
-
-    parent = [None for _ in graph]
 
     while(len(heap) > 0):
       currentDistance, currentVertex = heapq.heappop(heap)
