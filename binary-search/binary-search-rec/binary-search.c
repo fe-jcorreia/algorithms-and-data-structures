@@ -5,20 +5,13 @@
 
 int binarySearch(int list[], int key, int min, int max)
 {
-  if (list[min] == key)
-    return list[min];
-  else if (list[max] == key)
-    return list[max];
-  else if (max - min == 1)
-    return -1;
+  if (min > max) return -1;
 
-  int index = 0;
-  index = (min + max) / 2;
-  if (list[index] == key)
-    return list[index];
-
-  if (list[index] < key)
-    return binarySearch(list, key, index, max);
-  else if (list[index] > key)
-    return binarySearch(list, key, min, index);
+  int mid = (min + max) / 2;
+  if (list[mid] == key)
+    return list[mid];
+  else if (list[mid] > key)
+    return binarySearch(list, key, min, mid-1);
+  else
+    return binarySearch(list, key, mid+1, max);
 }
