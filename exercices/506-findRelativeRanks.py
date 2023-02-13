@@ -5,24 +5,25 @@ def findRelativeRanks(score):
   heap = [num for num in score]
   position = len(award)
   heapq.heapify(heap)
+  scorePosition = {}
 
   while heap:
     minItem = heapq.heappop(heap)
 
-    for i, num in enumerate(award):
-      if num == minItem:
-        if position == 3:
-          award[i] = 'Bronze Medal'
-        elif position == 2:
-          award[i] = 'Silver Medal'
-        elif position == 1:
-          award[i] = 'Gold Medal'
-        else:
-          award[i] = str(position)
-        break
+    if position == 3:
+      scorePosition[minItem] = 'Bronze Medal'
+    elif position == 2:
+      scorePosition[minItem] = 'Silver Medal'
+    elif position == 1:
+      scorePosition[minItem] = 'Gold Medal'
+    else:
+      scorePosition[minItem] = str(position)
         
     position -= 1
   
+  for i, num in enumerate(award):
+    award[i] = scorePosition[num]
+
   return award
 
 print(findRelativeRanks([5,4,3,2,1]))
