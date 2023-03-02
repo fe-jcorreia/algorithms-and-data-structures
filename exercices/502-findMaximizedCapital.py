@@ -37,7 +37,7 @@ def findMaximizedCapital_old(k, w, profits, capital):
   heap = []
 
   for i in range(len(profits)):
-    heapq.heappush(heap, (-profits[i], capital[i]))
+    heapq.heappush(heap, (capital[i], -profits[i]))
 
   for _ in range(k):
     if len(heap) == 0:

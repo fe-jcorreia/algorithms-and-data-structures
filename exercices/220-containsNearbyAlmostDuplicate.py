@@ -1,4 +1,4 @@
-# from sortedcontainers import SortedList
+from sortedcontainers import SortedList
 
 def containsNearbyAlmostDuplicate(nums, indexDiff, valueDiff):
   if not nums or indexDiff <= 0 or valueDiff < 0:
