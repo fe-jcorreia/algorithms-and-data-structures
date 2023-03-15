@@ -5,7 +5,7 @@ def bfs(graph, visited, initialVertex):
   q.append(initialVertex)
 
   while q:
-    curVertex = q.pop()
+    curVertex = q.pop(0)
     for nextVertex in range(n):
       if graph[curVertex][nextVertex] == 1 and nextVertex not in visited:
         visited.add(nextVertex)
