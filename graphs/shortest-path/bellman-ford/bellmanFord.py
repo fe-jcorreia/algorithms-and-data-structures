@@ -13,11 +13,8 @@ class BellmanFord():
 
     for _ in range(len(graph) - 1):
       for vertex in graph:
-        for edge in vertex:
-          currentVertex = edge[0]
+        for currentVertex, nextVertex, edgeWeight in vertex:
           currentDistance = total_distance[currentVertex]
-          nextVertex = edge[1]
-          edgeWeight = edge[2]
 
           if total_distance[nextVertex] > currentDistance + edgeWeight:
             total_distance[nextVertex] = currentDistance + edgeWeight

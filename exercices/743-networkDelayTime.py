@@ -51,7 +51,20 @@ def networkDelayTime_neetcode(times, n, k):
         heapq.heappush(heap, (w1 + w2, n2))
 
   return t if len(visited) == n else -1
+
+def networkDelayTime_bell(times, n, k):
+  totalTime = [sys.maxsize] * (n + 1)
+  totalTime[k] = 0
+
+  for _ in range(n - 1):
+    for s, d, t in times:
+      if totalTime[d] > totalTime[s] + t:
+        totalTime[d] = totalTime[s] + t
   
+  if sys.maxsize in totalTime[1:]:
+    return -1
+    
+  return max(totalTime[1:])
 
 print(networkDelayTime([[2,1,1],[2,3,1],[3,4,1]], 4, 2))
 print(networkDelayTime([[1,2,1]], 2, 1))
