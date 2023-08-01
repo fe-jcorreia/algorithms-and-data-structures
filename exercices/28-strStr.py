@@ -55,6 +55,7 @@ def strStr(haystack, needle):
   for i in range(m):
     badChar[ord(needle[i])] = i
   
+  print(badChar)
   s = 0
   while(s <= n - m):
     j = m - 1
@@ -71,8 +72,9 @@ def strStr(haystack, needle):
   return -1
   
   
- 
+print(strStr_KMP("WERFOSAAABCFABCSEOFDSA","AABCFABC"))
 
-print(strStr("sadbutsad", "sad"))
-print(strStr("leetcode", "leeto"))
-print(strStr("mississippi", "issipi"))
+print(strStr("WERFOSAAABCFABCSEOFDSA","AABCFABC"))
+# print(strStr("sadbutsad", "sad"))
+# print(strStr("leetcode", "leeto"))
+# print(strStr("mississippi", "issipi"))
