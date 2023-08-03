@@ -46,7 +46,7 @@ def strStr_KMP(haystack, needle):
   
   return -1
 
-def strStr(haystack, needle):
+def strStr_BM(haystack, needle):
   m = len(needle)
   n = len(haystack)
 
@@ -68,6 +68,18 @@ def strStr(haystack, needle):
       # s += (m - badChar[ord(haystack[s + m])] if s + m < n else 1)
     else:
       s += max(1, j - badChar[ord(haystack[s + j])])
+  
+  return -1
+
+def strStr(haystack, needle):
+  m = len(needle)
+  n = len(haystack)
+
+  hNeedle = hash(needle)
+
+  for i in range(n - m):
+    if hash(haystack[i:i + m]) == hNeedle:
+      if haystack[i:i + m] == needle: return i
   
   return -1
   
