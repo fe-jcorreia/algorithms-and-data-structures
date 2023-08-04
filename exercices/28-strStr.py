@@ -55,7 +55,6 @@ def strStr_BM(haystack, needle):
   for i in range(m):
     badChar[ord(needle[i])] = i
   
-  print(badChar)
   s = 0
   while(s <= n - m):
     j = m - 1
@@ -72,16 +71,33 @@ def strStr_BM(haystack, needle):
   return -1
 
 def strStr(haystack, needle):
+  if len(haystack) < len(needle): return -1
   m = len(needle)
   n = len(haystack)
+  d = 256
+  q = 101
+  hNeedle = 0
+  hHaystack = 0
+  h = (d**(m - 1)) % q
+ 
+  for i in range(m):
+    hNeedle = (d * hNeedle + ord(needle[i])) % q
+    hHaystack = (d * hHaystack + ord(haystack[i])) % q
 
-  hNeedle = hash(needle)
+  j = 0
+  for i in range(n - m + 1):
+    if hNeedle == hHaystack:
+      for j in range(m):
+        if haystack[i + j] != needle[j]:
+          break
+      if j == m - 1: return i
 
-  for i in range(n - m):
-    if hash(haystack[i:i + m]) == hNeedle:
-      if haystack[i:i + m] == needle: return i
+    if i < n - m:
+      hHaystack = (d * (hHaystack - ord(haystack[i]) * h) + ord(haystack[i + m])) % q
+      if hHaystack < 0: hHaystack += q
   
   return -1
+  
   
   
 print(strStr_KMP("WERFOSAAABCFABCSEOFDSA","AABCFABC"))
