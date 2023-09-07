@@ -1,0 +1,19 @@
+{
+  "name": "javascript-decorators",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "transpile": "babel src -d dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "7.22.15",
+    "@babel/core": "7.22.15",
+    "@babel/plugin-proposal-decorators": "7.22.15",
+    "@babel/preset-env": "7.22.15"
+  }
+}
