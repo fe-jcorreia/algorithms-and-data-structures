@@ -1,5 +1,6 @@
+import heapq
+
 def longestPathProblem(source):
-  visited = set()
   topologicalSort = []
   graph = { 
     0: [(1,5), (2,3)],
@@ -10,25 +11,29 @@ def longestPathProblem(source):
     5: []
   }
 
-  def sort(graph, initialVertex):
-    visited.add(initialVertex)
-
-    for edge in graph[initialVertex]:
-      if not (edge[0] in visited):
-        sort(graph, edge[0])
-
-    topologicalSort.append(initialVertex)
-
   def dijkstra(graph, source):
-    dist = [float("inf") for _ in range(len(graph))]
+    total_distance = [float("inf") for _ in graph]
+    total_distance[source] = 0
+    heap = [(0, source)]
 
-    dist[source] = 0
-    for vertex in topologicalSort:
-      pass
+    while(len(heap) > 0):
+      currentDistance, currentVertex = heapq.heappop(heap)
 
-  sort(graph, 0)
+      if currentDistance > total_distance[currentVertex]:
+        continue
+
+      for edge in graph[currentVertex]:
+        nextVertex, edgeWeight = edge[0], -edge[1]
+
+        if total_distance[nextVertex] > currentDistance + edgeWeight:
+          total_distance[nextVertex] = currentDistance + edgeWeight
+          heapq.heappush(heap, (total_distance[nextVertex], nextVertex))
+
+    return total_distance
+  
   topologicalSort.reverse()
+  dist = [-x if x != float('inf') else x for x in dijkstra(graph, source)]
 
+  return dist
 
-
-longestPathProblem(1)
+print(longestPathProblem(1))
